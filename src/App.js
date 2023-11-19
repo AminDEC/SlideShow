@@ -4,10 +4,10 @@ import Pics from "./objects.js";
 function App() {
   return (
     <div className="App">
-      <img className="imag__back" src={Pics[0].image_adrees} alt="NO" />
+      <img className="imag__back" src={Pics[4].image_adrees} alt="NO" />
       <div className="main__container">
         <div className="image__container">
-          <img src={Pics[0].image_adrees} alt="" className="image__view" />
+          <img src={Pics[4].image_adrees} alt="" className="image__view" />
           <div className="image__details">
             <h1>{Pics[0].name}</h1>
             <p>
@@ -24,7 +24,15 @@ function App() {
           </div>
         </div>
 
-        <div className="slider__container"></div>
+        <div className="slider__container">
+          <div className="card__container">
+            <button className="glass__button"> Previous </button>
+            {Pics.map((Pic) => (
+              <img src={Pic.image_adrees} alt="" className="image__card" />
+            ))}
+            <button className="glass__button"> Next </button>
+          </div>
+        </div>
       </div>
     </div>
   );
