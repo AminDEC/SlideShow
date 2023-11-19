@@ -4,18 +4,18 @@ import { useState } from "react";
 
 function App() {
   const [current_index, setCurrent_index] = useState(0);
-
+  var max_index = Pics.length - 1;
   let next = () => {
     setCurrent_index(
       current_index === Pics.length - 1
-        ? current_index - current_index
+        ? current_index - max_index
         : current_index + 1
     );
   };
 
   let previous = () => {
     setCurrent_index(
-      current_index === 0 ? current_index + Pics.length - 1 : current_index - 1
+      current_index === 0 ? current_index + max_index : current_index - 1
     );
   };
   return (
