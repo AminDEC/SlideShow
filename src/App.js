@@ -1,36 +1,67 @@
 import "./App.css";
 import Pics from "./objects.js";
+import { useState } from "react";
 
 function App() {
+  const [current_index, setCurrent_index] = useState(0);
+
+  let next = () => {
+    setCurrent_index(
+      current_index === Pics.length - 1
+        ? current_index - current_index
+        : current_index + 1
+    );
+  };
+
+  let previous = () => {
+    setCurrent_index(
+      current_index === 0 ? current_index + Pics.length - 1 : current_index - 1
+    );
+  };
   return (
     <div className="App">
-      <img className="imag__back" src={Pics[4].image_adrees} alt="NO" />
+      <img
+        className="imag__back"
+        src={Pics[current_index].image_adrees}
+        alt="NO"
+      />
       <div className="main__container">
         <div className="image__container">
-          <img src={Pics[4].image_adrees} alt="" className="image__view" />
+          <img
+            src={Pics[current_index].image_adrees}
+            alt=""
+            className="image__view"
+          />
           <div className="image__details">
-            <h1>{Pics[0].name}</h1>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-              egestas nibh in varius tincidunt. In scelerisque elit et leo
-              interdum maximus. Nunc dapibus ante at augue maximus tincidunt.
-              Suspendisse tincidunt euismod hendrerit. Morbi ac turpis lacinia,
-              vehicula enim lacinia, porttitor urna. Nullam placerat risus eros,
-              vel convallis leo venenatis eu. Duis vel mattis massa. Fusce
-              venenatis leo est, ac gravida risus pretium in. Nam quis tortor
-              mauris. Donec ac enim vitae massa fermentum venenatis. Nam nec
-              diam condimentum, ornare ante eget, auctor odio.
-            </p>
+            <h1>{Pics[current_index].name}</h1>
+            <br />
+            <p>{Pics[current_index].details}</p>
           </div>
         </div>
 
         <div className="slider__container">
           <div className="card__container">
-            <button className="glass__button"> Previous </button>
-            {Pics.map((Pic) => (
-              <img src={Pic.image_adrees} alt="" className="image__card" />
+            <button className="glass__button" onClick={previous}>
+              Previous
+            </button>
+            {Pics.map((Pic, index) => (
+              <img
+                src={Pic.image_adrees}
+                alt=""
+                className="image__card"
+                style={{
+                  boxShadow:
+                    index === current_index
+                      ? "0 0 10px blue"
+                      : "0 0 10px black",
+
+                  transform: index === current_index ? " scale(1.25)" : "none",
+                }}
+              />
             ))}
-            <button className="glass__button"> Next </button>
+            <button className="glass__button" onClick={next}>
+              Next
+            </button>
           </div>
         </div>
       </div>

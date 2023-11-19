@@ -73,7 +73,6 @@
   border-radius: 10px;
   width: 10%;
   height: 10%;
-  box-shadow: 5px 5px 10px black;
 }
 
 .glass__button {
@@ -89,8 +88,4 @@
   backdrop-filter: blur(30px);
   color: rgba(255, 255, 255, 0.8);
   text-transform: uppercase;
-}
-
-.card__border {
-  box-shadow: 5px 5px 10px blue;
 }
