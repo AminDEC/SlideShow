@@ -1,10 +1,18 @@
+// Mostafa M Amin
+// use the code if you found it helpfull :)
+
 import "./App.css";
 import Pics from "./objects.js";
 import { useState } from "react";
 
 function App() {
+  // state management usin '' use state '' hook
   const [current_index, setCurrent_index] = useState(0);
+
+  // getting max indwx on a seperade var to prevent lins being to long
   var max_index = Pics.length - 1;
+
+  // functions for event handeling
   let next = () => {
     setCurrent_index(
       current_index === Pics.length - 1
@@ -18,6 +26,10 @@ function App() {
       current_index === 0 ? current_index + max_index : current_index - 1
     );
   };
+
+  // main body
+
+  // the names of classes are self-explanatory
   return (
     <div className="App">
       <img
@@ -49,6 +61,7 @@ function App() {
                 src={Pic.image_adrees}
                 alt=""
                 className="image__card"
+                // nice blue shadow around the current card
                 style={{
                   boxShadow:
                     index === current_index
